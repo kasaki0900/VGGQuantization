@@ -12,6 +12,3 @@ def clip_cut(pth_path, threshold_percent):
 
     return params
 
-
-if __name__ == '__main__':
-    pass

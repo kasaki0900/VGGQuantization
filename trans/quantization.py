@@ -159,6 +159,7 @@ class LayerQuantizationTool(QuantizationTool):
 
 
 if __name__ == '__main__':
+    # 量化操作，结果保存在weights文件夹
     pth_file = "../weights/VGG16_cifar10_8904.pth"
-    qt = GlobalQuantizationTool(pth_file)
-    qt()
+    qt = LayerQuantizationTool(pth_file)
+    qt(np.uint16)
