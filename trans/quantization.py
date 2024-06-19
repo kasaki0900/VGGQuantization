@@ -24,7 +24,7 @@ class GlobalQuantizationTool(QuantizationTool):
         layers = 0
         for name, param in self.param_dict.items():
             layers += 1
-            if param.shape == torch.Size([]) or name.endswith('running_mean') or name.endswith('running_var'):
+            if param.shape == torch.Size([]):
                 # Batch_Norm 跳过
                 continue
             param_max = param.max().item()
@@ -64,7 +64,7 @@ class GlobalQuantizationTool(QuantizationTool):
         quantized_dict = collections.OrderedDict()
         layer = 0
         for name, param in self.param_dict.items():
-            if param.shape == torch.Size([]) or name.endswith('running_mean') or name.endswith('running_var'):
+            if param.shape == torch.Size([]):
                 # Batch_Norm 不变
                 quantized = param
             else:
@@ -159,6 +159,6 @@ class LayerQuantizationTool(QuantizationTool):
 
 
 if __name__ == '__main__':
-    pth_file = "../weights/VGG16_cifar10_8931.pth"
-    qt = LayerQuantizationTool(pth_file)
+    pth_file = "../weights/VGG16_cifar10_8904.pth"
+    qt = GlobalQuantizationTool(pth_file)
     qt()

@@ -79,7 +79,8 @@ if __name__ == '__main__':
         test=True
     )
     loader = (train_loader, test_loader)
-
+    # train the model
+    '''
     cost_function = torch.nn.CrossEntropyLoss()
     optim = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
     scheduler = torch.optim.lr_scheduler.StepLR(optim, step_size=10, gamma=0.5, last_epoch=-1)
@@ -92,5 +93,10 @@ if __name__ == '__main__':
         cost_function,
         epochs=50,
         eval_step=10
-    )
+    )'''
+
+    pth_path = "weights/VGG16_cifar10_8931.pth"
+    acc = evaluate(model, test_loader, 'cuda', pth_path)
+    print(f'accuracy: {acc}%')
+
 

@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 
 def param_count(pth_path):
+    """for the global quantization"""
     pth = torch.load(pth_path)
     param_dict = pth['param_dict']
     maxi = pth['max']
@@ -61,6 +62,9 @@ def compute_mean_std(pth_path):
 
 
 if __name__ == '__main__':
-    # table = param_count('../weights/uint8_VGG16_cifar10_8931.pth')
-    pth = '../weights/VGG16_cifar10_8931.pth'
-    compute_mean_std(pth)
+    table = param_count('../weights/uint8_VGG16_cifar10_8904.pth')
+    # pth = '../weights/VGG16_cifar10_8931.pth'
+
+
+
+

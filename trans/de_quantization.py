@@ -78,19 +78,4 @@ if __name__ == '__main__':
     torch.random.manual_seed(0)
     torch.cuda.manual_seed(0)
 
-    qt_path = "../weights/uint8_VGG16_cifar10_8931.pth"
-    pth_path = "../weights/VGG16_cifar10_8931.pth"
-    model = VGG16.form_model()
-    _, test_dataset = data.form_datasets()
-    test_loader = data.form_dataloader(
-        test_dataset,
-        batch_size=64,
-        test=True
-    )
 
-    # print(evaluate(model, test_loader, 'cuda', pth_path))
-    de_qt = LayerDeQuantizationTool(qt_path)
-
-    model.load_state_dict(de_qt.de_quantize())
-    print(evaluate(model, test_loader, 'cuda'))
-    # print(de_qt.de_quantize())

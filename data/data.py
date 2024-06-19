@@ -22,14 +22,14 @@ def form_datasets():
     transform_test = tf(False)
 
     train_dataset = datasets.CIFAR10(
-        root='..',
+        root='',
         train=True,
         transform=transform_train,
         download=False
     )
 
     test_dataset = datasets.CIFAR10(
-        root='..',
+        root='',
         train=False,
         transform=transform_test,
         download=False
